@@ -7,3 +7,9 @@ make
 rm -rf *
 
 Windows:
+
+mkdir cmake-build-debug
+cd cmake-build-debug
+cmake ./../ -G "Unix Makefiles"  -DCMAKE_SH="CMAKE_SH-NOTFOUND"
+make
+
