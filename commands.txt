@@ -1,6 +1,6 @@
 MAC:
 
-mkdir build && cd build
+mkdir cmake_build_debug && cd cmake_build_debug
 cmake ./../
 make
 
