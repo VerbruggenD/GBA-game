@@ -5,6 +5,7 @@ add_executable(${PROJECT_NAME}.elf
         src/test_scene.cpp
         src/test_scene.h
         src/lama.h
+        src/lama.c
         src/test.h)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
