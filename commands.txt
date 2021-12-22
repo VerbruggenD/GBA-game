@@ -15,6 +15,6 @@ make
 
 Grit: in src map, creeert een h en c file van sprite
 
-grit img.png -ftc
+grit ../img/image.png -ftc
 
 add files in CMakeLists
