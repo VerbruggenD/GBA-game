@@ -2,7 +2,7 @@
 This note contains the project tasks. This documentation is only used for the developers to know what they are working on.
 
 ## Work in progress:
-
+- background photo layer
 
 ## Backlog:
 - Char 1 sprite:
