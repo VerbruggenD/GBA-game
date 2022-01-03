@@ -2,8 +2,6 @@ project(firsttest)
 
 add_executable(${PROJECT_NAME}.elf
         src/main.cpp
-        src/level1_bg.h
-        src/level1_bg.c
         src/level1_scene.h
         src/level1_scene.cpp)
 
