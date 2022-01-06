@@ -7,9 +7,11 @@
 
 #include "level1_scene.h"
 
+#include "background.h"
+
 std::vector<Background *> Level1Scene::backgrounds() {
     return {
-        //bg.get()
+        bg.get()
     };
 }
 
@@ -21,11 +23,11 @@ std::vector<Sprite *> Level1Scene::sprites() {
 
 void Level1Scene::load() {
 
-    //engine.get()->disableText();
+    engine.get()->disableText();
     //engine.get()->enableText();
 
     //foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(testPal, sizeof(testPal)));
-    //backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(level1_bgPal, sizeof(level1_bgPal)));
+    backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(backgroundPal, sizeof(backgroundPal)));
 
     SpriteBuilder<Sprite> builder;
 
@@ -37,10 +39,13 @@ void Level1Scene::load() {
     //         .buildPtr();
 
     
-    TextStream::instance().setText("TEEESST", 0, 0);
+    //TextStream::instance().setText("TEEESST", 0, 0);
 
-    //bg = std::unique_ptr<Background>(new Background(1, level1_bgTiles, sizeof(level1_bgTiles), level1_bgMap, sizeof(level1_bgMap)));
-    //bg.get()->useMapScreenBlock(16);
+    //bg = std::unique_ptr<Background>(new Background(0, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
+    bg = std::unique_ptr<Background>(new Background(3, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
+    bg.get()->useMapScreenBlock(16);
+
+    
 
     engine->getTimer()->start();
 }

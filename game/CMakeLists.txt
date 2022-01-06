@@ -3,7 +3,9 @@ project(firsttest)
 add_executable(${PROJECT_NAME}.elf
         src/main.cpp
         src/level1_scene.h
-        src/level1_scene.cpp)
+        src/level1_scene.cpp
+        src/background.h
+        src/background.c)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
 
