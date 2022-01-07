@@ -1,37 +1,29 @@
 # devNotes
 This note contains the project tasks. This documentation is only used for the developers to know what they are working on.
+Inspiratie top-down game https://github.com/Gilleslenaerts007/gba-sprite-engine
 
 ## Work in progress:
 - background photo layer
 
 ## Backlog:
-- Char 1 sprite:
+- Character 1 sprite:
     - grit import
     - animations
         - running
-        - fighting
-        - jumping
     - control binding
-
-- Char 2 sprite:
-    - grit import
-        - animations
-            - running
-            - fighting
-            - jumping
-        - "AI" movements
 
 - Background:
     - photo layer
         - grit import
-        - scrolling
+        - scrolling (optional)
     - text layer
-        - health
-        - level
+        - money
+        - seeds
+        - time of day
 
-- Physics:
-    - jumping
-    - damage strike
+- Borders:
+    - cordinate based (works only for 1 map)
+    - Tile based (works for all maps)
 
 - Sound:
     - splash sound
@@ -41,12 +33,7 @@ This note contains the project tasks. This documentation is only used for the de
 
 - Menu:
     - splashscreen
-    - select level
-
-- Multiple scenes:
-    - level 1
-    - level 2
-    - game over
-
+    - home (cash and produce select (seeds))
+    - barn (stash of produce)
 
 ## Finished:

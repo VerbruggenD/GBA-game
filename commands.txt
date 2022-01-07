@@ -18,5 +18,8 @@ Grit: in src map, creeert een h en c file van sprite
 grit ../img/image.png -ftc
 
 grit ../img/level1_bg.png -gt -gB8 -mRtpf -mLs -ftc     // werkt niet voor achtergronden
+grit ../img/background.png -gB8 -gt -m -mRtf -mLs -Mh1 -Mw1 -p -pn256 -pT0 -ftc -W3
+
+./png2gba-master/png2gba -p -t -c=#000000 farmer.png    // werkt voor sprite
 
 add files in CMakeLists

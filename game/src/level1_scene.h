@@ -8,7 +8,7 @@
 
 class Level1Scene : public Scene {
 private:
-    std::unique_ptr<Sprite> animation;
+    std::unique_ptr<Sprite> farmer;
     std::unique_ptr<Background> bg;
     bool pressingAorB = false;
 
