@@ -6,14 +6,14 @@
 #include <libgba-sprite-engine/scene.h>
 #include <libgba-sprite-engine/background/background.h>
 
-class Level1Scene : public Scene {
+class Farm1Scene : public Scene {
 private:
     std::unique_ptr<Sprite> farmer;
     std::unique_ptr<Background> bg;
     bool pressingAorB = false;
 
 public:
-    Level1Scene(std::shared_ptr<GBAEngine> engine) : Scene(engine) {}
+    Farm1Scene(std::shared_ptr<GBAEngine> engine) : Scene(engine) {}
 
     std::vector<Sprite *> sprites() override;
     std::vector<Background *> backgrounds() override;

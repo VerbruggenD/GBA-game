@@ -1,15 +1,13 @@
-project(firsttest)
+project(FarmCity)
 
 add_executable(${PROJECT_NAME}.elf
         src/main.cpp
-        src/level1_scene.h
-        src/level1_scene.cpp
+        src/Farm1Scene.h
+        src/Farm1Scene.cpp
         src/background.h
         src/background.c
         src/farmer.h
-        src/farmer.c
-        src/shared.h
-        src/shared.c)
+        src/farmer.c)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
 

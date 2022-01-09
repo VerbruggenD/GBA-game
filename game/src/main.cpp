@@ -5,7 +5,7 @@
 #include <libgba-sprite-engine/palette/palette_manager.h>
 #include <libgba-sprite-engine/allocator.h>
 
-#include "level1_scene.h"
+#include "Farm1Scene.h"
 
 /**
  * shared palette extracted from grit
@@ -15,8 +15,8 @@
 int main() {
     std::shared_ptr<GBAEngine> engine(new GBAEngine());
 
-    Level1Scene* scene1 = new Level1Scene(engine);
-    engine->setScene(scene1);
+    Farm1Scene* farm1 = new Farm1Scene(engine);
+    engine->setScene(farm1);
 
     while (true) {
         engine->update();

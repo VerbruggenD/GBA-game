@@ -5,30 +5,30 @@
 #include <libgba-sprite-engine/gba_engine.h>
 #include <libgba-sprite-engine/effects/fade_out_scene.h>
 
-#include "level1_scene.h"
+#include "Farm1Scene.h"
 
 #include "background.h"
 #include "farmer.h"
-#include "shared.h"
+//#include "shared.h"
 
-std::vector<Background *> Level1Scene::backgrounds() {
+std::vector<Background *> Farm1Scene::backgrounds() {
     return {
         bg.get()
     };
 }
 
-std::vector<Sprite *> Level1Scene::sprites() {
+std::vector<Sprite *> Farm1Scene::sprites() {
     return {  
         farmer.get()
         };
 }
 
-void Level1Scene::load() {
+void Farm1Scene::load() {
 
     engine.get()->disableText();
     //engine.get()->enableText();
 
-    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(sharedPal, sizeof(sharedPal)));
+    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(farmerPal, sizeof(farmerPal)));
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(backgroundPal, sizeof(backgroundPal)));
 
     SpriteBuilder<Sprite> builder;
@@ -45,7 +45,7 @@ void Level1Scene::load() {
 
     REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;    // Only these windows active
     //bg = std::unique_ptr<Background>(new Background(0, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
-    bg = std::unique_ptr<Background>(new Background(1, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
+    bg = std::unique_ptr<Background>(new Background(1, backgroundTiles, sizeof(backgroundTiles), menuMap, sizeof(menuMap)));
     bg.get()->useMapScreenBlock(26);
 
     
@@ -53,7 +53,7 @@ void Level1Scene::load() {
     engine->getTimer()->start();
 }
 
- void Level1Scene::tick(u16 keys) {
+ void Farm1Scene::tick(u16 keys) {
      TextStream::instance().setText(engine->getTimer()->to_string(), 18, 1);
-
+     
 }
