@@ -8,8 +8,7 @@
 
 #include "../farmer/farmer_player.h"
 
-#define FARMER_START_X 0
-#define FARMER_START_Y 4*8
+#define START_INDEX 32*4
 
 class Farm1Scene : public Scene{
 private:

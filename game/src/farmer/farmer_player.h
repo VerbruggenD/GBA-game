@@ -17,14 +17,13 @@ private:
     unsigned char farmerPosX;
     unsigned char farmerPosY;
     bool moving;
-    bool flipped = 0;
+    bool flipped;
+    unsigned char staticFrame;
 
-    // unsigned int money;
-    // unsigned char seeds;
-    // bool water;
-    // unsigned char crops;
-
-    // const unsigned short* mapLayout;
+    const unsigned short* mapLayout;
+    const unsigned char layoutWidth = 30;   // 32 tiles with last 2 unused
+    const unsigned char layoutHeight = 20;  // 32 tiles with last 12 unused
+    unsigned short mapIndex;
 
 public:
 
@@ -40,8 +39,14 @@ public:
 
     void move(u16 input);
     int getOrientation();
+    void rotate(int direction);
+    int getMapIndex(unsigned short currentIndex, unsigned char moveCmd);    // simple implementation, doesnt look at the bounderies
+    // unwanted behaviour possible on the edge of the map
+    // easy fix, check if pos is on left or top of the map
+    int getXcor(unsigned short mapIndex);
+    int getYcor(unsigned short mapIndex);
 
-    Farmer(SpriteBuilder<Sprite> builder, int x, int y);
+    Farmer(SpriteBuilder<Sprite> builder, unsigned short mapIndex, const unsigned short *mapLayout);
 };
 
 #endif //GBA_GAME_FARMER_PLAYER_H
