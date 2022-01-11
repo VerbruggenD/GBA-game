@@ -46,9 +46,9 @@ void Farm1Scene::load() {
     engine->getTimer()->start();
 }
 
- void Farm1Scene::tick(u16 keys) {
-     //TextStream::instance().setText(engine->getTimer()->to_string(), 18, 1);
-     //TextStream::instance().clear();
+void Farm1Scene::tick(u16 keys) {
+    //TextStream::instance().setText(engine->getTimer()->to_string(), 18, 1);
+    //TextStream::instance().clear();
 
     //  int test = farmer1->getOrientation();      // testing of function getOrientation
     //  TextStream::instance().setText(std::to_string(test),10,10);
@@ -56,9 +56,8 @@ void Farm1Scene::load() {
     // auto test = boundaryMap[0];     // test inlezen boundary map
     // TextStream::instance().setText(std::to_string(test),10,10);
 
-    auto test = farmer1->readMap(farmer1->getTile());
-    TextStream::instance().setText(std::to_string(test),10,10);
+    // auto test = farmer1->readMap(farmer1->getTile());
+    // TextStream::instance().setText(std::to_string(test),10,10);
 
-     farmer1->move(keys);
-     engine->delay(1000);
+    farmer1->move(keys);
 }

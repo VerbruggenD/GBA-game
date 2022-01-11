@@ -44,14 +44,13 @@ public:
     void move(u16 input);
     int getOrientation();
     void rotate(int direction);
-    int getMapIndex(unsigned short currentIndex, unsigned char moveCmd);    // simple implementation, doesnt look at the bounderies
+    int getNextTile(unsigned char moveCmd);    // simple implementation, doesnt look at the bounderies
     // unwanted behaviour possible on the edge of the map
     // easy fix, check if pos is on left or top of the map
     int getXcor(unsigned short mapIndex);
     int getYcor(unsigned short mapIndex);
     unsigned short readMap(unsigned short mapIndex);
     unsigned short getTile();
-    unsigned short getNextTile(unsigned char direction);
 
     Farmer(SpriteBuilder<Sprite> builder, unsigned short mapIndex, const unsigned short *mapLayout);
 };
