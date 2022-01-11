@@ -6,13 +6,18 @@
 #include <libgba-sprite-engine/gba/tonc_types.h>
 #include <libgba-sprite-engine/gba_engine.h>
 
+#define STATIC_FRAME 0
+#define FACING_UP 0
+#define FACING_RIGHT 1
+#define FACING_DOWN 2
+#define FACING_LEFT 3
+
 class Farmer {
 private:
     unsigned char farmerPosX;
     unsigned char farmerPosY;
     bool moving;
-    bool facingDown;
-    bool facingRight;
+    bool flipped = 0;
 
     // unsigned int money;
     // unsigned char seeds;
@@ -33,10 +38,10 @@ public:
     void getWater(u16 input, bool water);
     void waterCrop(u16 input, bool water);
 
-    void move(u16 input, int x, int y);
+    void move(u16 input);
+    int getOrientation();
 
-    Farmer(SpriteBuilder<Sprite> builder, int x, int y, 
-    unsigned int money, unsigned char seeds, bool water, unsigned char crops);
+    Farmer(SpriteBuilder<Sprite> builder, int x, int y);
 };
 
 #endif //GBA_GAME_FARMER_PLAYER_H

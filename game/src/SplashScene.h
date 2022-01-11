@@ -1,32 +1,24 @@
-#ifndef GBA_SPRITE_ENGINE_SCENE_1
-#define GBA_SPRITE_ENGINE_SCENE_1
+#ifndef GBA_SPRITE_ENGINE_SPLASH
+#define GBA_SPRITE_ENGINE_SPLASH
 
 #include <libgba-sprite-engine/sprites/sprite.h>
 #include <libgba-sprite-engine/sprites/affine_sprite.h>
 #include <libgba-sprite-engine/scene.h>
 #include <libgba-sprite-engine/background/background.h>
 
-#include "farmer_player.h"
-
-#define FARMER_START_X 0
-#define FARMER_START_Y 4*8
-
-class Farm1Scene : public Scene{
+class SplashScene : public Scene {
 private:
     std::unique_ptr<Background> bg;
     bool pressingAorB = false;
 
-    SpriteBuilder<Sprite> builder;
-    Farmer* farmer1;
-
 public:
-    Farm1Scene(std::shared_ptr<GBAEngine> engine) : Scene(engine){}
+    SplashScene(std::shared_ptr<GBAEngine> engine) : Scene(engine) {}
 
-    std::vector<Sprite *> sprites() override;
     std::vector<Background *> backgrounds() override;
+    std::vector<Sprite *> sprites() override;
 
     void load() override;
     void tick(u16 keys) override;
 
 };
-#endif //GBA_SPRITE_ENGINE_SCENE_1
+#endif //GBA_SPRITE_ENGINE_SPLASH

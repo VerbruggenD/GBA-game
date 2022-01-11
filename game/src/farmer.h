@@ -1,28 +1,28 @@
 
-//{{BLOCK(farmer)
+//{{BLOCK(boer_full)
 
 //======================================================================
 //
-//	farmer, 16x48@8, 
+//	boer_full, 16x96@8, 
 //	+ palette 256 entries, not compressed
-//	+ 12 tiles not compressed
-//	Total size: 512 + 768 = 1280
+//	+ 24 tiles not compressed
+//	Total size: 512 + 1536 = 2048
 //
-//	Time-stamp: 2022-01-07, 17:21:49
+//	Time-stamp: 2022-01-10, 20:30:11
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.16
 //	( http://www.coranac.com/projects/#grit )
 //
 //======================================================================
 
-#ifndef GRIT_FARMER_H
-#define GRIT_FARMER_H
+#ifndef GRIT_BOER_FULL_H
+#define GRIT_BOER_FULL_H
 
-#define farmerTilesLen 768
-extern const unsigned int farmerTiles[192];
+#define boer_fullTilesLen 1536
+extern const unsigned int farmerTiles[384];
 
-#define farmerPalLen 512
+#define boer_fullPalLen 512
 extern const unsigned short farmerPal[256];
 
-#endif // GRIT_FARMER_H
+#endif // GRIT_BOER_FULL_H
 
-//}}BLOCK(farmer)
+//}}BLOCK(boer_full)

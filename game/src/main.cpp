@@ -5,18 +5,13 @@
 #include <libgba-sprite-engine/palette/palette_manager.h>
 #include <libgba-sprite-engine/allocator.h>
 
-#include "Farm1Scene.h"
+#include "SplashScene.h"
 
-/**
- * shared palette extracted from grit
- * ./../grit piskel.png piskel2.png kul.png -ftc -pS -gB8 -O shared.c
- * assumes 8bpp sprites
- */
 int main() {
-    std::shared_ptr<GBAEngine> engine(new GBAEngine());
+     std::shared_ptr<GBAEngine> engine(new GBAEngine());
 
-    Farm1Scene* farm1 = new Farm1Scene(engine);
-    engine->setScene(farm1);
+     SplashScene* splash = new SplashScene(engine);
+     engine->setScene(splash);
 
     while (true) {
         engine->update();
