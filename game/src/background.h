@@ -27,8 +27,8 @@ extern const unsigned short backgroundMap[1024];
 #define menuMapLen 2048
 extern const unsigned short menuMap[1024];
 
-#define boundaryMap 2048
-extern const unsigned short boundaryMap[1024]
+#define boundaryMapLen 2048
+extern const unsigned short boundaryMap[1024];
 
 #define backgroundPalLen 512
 extern const unsigned short backgroundPal[256];
