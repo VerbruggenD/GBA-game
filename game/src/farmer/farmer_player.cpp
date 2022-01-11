@@ -25,6 +25,10 @@ int Farmer::getYcor(unsigned short mapIndex) {      // tested & works
     return ((mapIndex/(this->layoutWidth+2))*8);
 }
 
+unsigned short Farmer::readMap(unsigned short mapIndex) {
+    return (this->mapLayout[mapIndex]);
+}
+
 int Farmer::getOrientation() {                  // tested & works
 
     //spriteFarmer->animateToFrame(0);  // for testing
@@ -44,6 +48,16 @@ int Farmer::getOrientation() {                  // tested & works
     {
         return FACING_LEFT;
     }
+}
+
+unsigned short Farmer::getTile() {
+    auto mapX = this->farmerPosX/8;
+    auto mapY = this->farmerPosY/8;
+    return ((mapY*(layoutWidth+2))+mapX);
+}
+
+unsigned char Farmer::getNextTile() {
+    
 }
 
 int Farmer::getMapIndex(unsigned short currentIndex, unsigned char moveCmd) {       
@@ -96,7 +110,7 @@ void Farmer::rotate(int direction) {
     this->spriteFarmer->flipVertically(flipped);
 }
 
-void Farmer::move(u16 keys) {
+void Farmer::move(u16 keys) {       // when rotating the key is pressed to long, move function is also ran
 
     if (keys & KEY_ANY) {
 
@@ -109,8 +123,15 @@ void Farmer::move(u16 keys) {
             if (this->getOrientation() == FACING_LEFT) {
                 // check boundary map
                 // move left 1 tile
-                this->spriteFarmer->animateToFrame(3);
-                this->staticFrame = 4;
+                if (this->readMap(this->getTile())) {
+                    //this->spriteFarmer->animateToFrame(3);
+                    this->staticFrame = 4;
+                    this->spriteFarmer->setVelocity(-1,0);
+                }
+                else {
+                    this->spriteFarmer->setVelocity(0,0);
+                    break;
+                }
             }
             else this->rotate(FACING_LEFT);
             break;
@@ -118,8 +139,15 @@ void Farmer::move(u16 keys) {
             if (this->getOrientation() == FACING_RIGHT) {
                 // check boundary map
                 // move right 1 tile
-                this->spriteFarmer->animateToFrame(3);
-                this->staticFrame = 4;
+                if (this->readMap(this->getTile())) {
+                    //this->spriteFarmer->animateToFrame(3);
+                    this->staticFrame = 4;
+                    this->spriteFarmer->setVelocity(1,0);
+                }
+                else {
+                    this->spriteFarmer->setVelocity(0,0);
+                    break;
+                }              
             }
             else this->rotate(FACING_RIGHT);
             break;
@@ -127,8 +155,16 @@ void Farmer::move(u16 keys) {
             if (this->getOrientation() == FACING_UP) {
                 // check boundary map
                 // move up 1 tile
-                this->spriteFarmer->animateToFrame(2);
-                this->staticFrame = 1;
+                if (this->readMap(this->getTile())) {
+                    //this->spriteFarmer->animateToFrame(2);
+                    this->staticFrame = 1;
+                    this->spriteFarmer->setVelocity(0,-1);
+                }
+                else {
+                    this->spriteFarmer->setVelocity(0,0);
+                    break;
+                }
+                
             }
             else this->rotate(FACING_UP);
             break;
@@ -136,8 +172,15 @@ void Farmer::move(u16 keys) {
             if (this->getOrientation() == FACING_DOWN) {
                 // check boundary map
                 // move down 1 tile
-                this->spriteFarmer->animateToFrame(2);
-                this->staticFrame = 1;
+                if (this->readMap(this->getTile())) {
+                    //this->spriteFarmer->animateToFrame(2);
+                    this->staticFrame = 1;
+                    this->spriteFarmer->setVelocity(0,1);
+                }
+                else {
+                    this->spriteFarmer->setVelocity(0,0);
+                    break;
+                }               
             }
             else this->rotate(FACING_DOWN);
             break;
@@ -145,5 +188,8 @@ void Farmer::move(u16 keys) {
         default:
             break;
         }
+    }
+    else {
+        this->spriteFarmer->setVelocity(0,0);
     }
 }
