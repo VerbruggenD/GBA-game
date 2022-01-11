@@ -8,7 +8,7 @@
 #include "SplashScene.h"
 #include "Farm1Scene.h"
 
-#include "background.h"
+#include "../background.h"
 //#include "shared.h"
 
 std::vector<Background *> SplashScene::backgrounds() {

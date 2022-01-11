@@ -6,7 +6,7 @@
 #include <libgba-sprite-engine/scene.h>
 #include <libgba-sprite-engine/background/background.h>
 
-#include "farmer_player.h"
+#include "../farmer/farmer_player.h"
 
 #define FARMER_START_X 0
 #define FARMER_START_Y 4*8

@@ -2,16 +2,16 @@ project(FarmCity)
 
 add_executable(${PROJECT_NAME}.elf
         src/main.cpp
-        src/SplashScene.h
-        src/SplashScene.cpp
-        src/Farm1Scene.h
-        src/Farm1Scene.cpp
+        src/scenes/SplashScene.h
+        src/scenes/SplashScene.cpp
+        src/scenes/Farm1Scene.h
+        src/scenes/Farm1Scene.cpp
         src/background.h
         src/background.c
-        src/farmer.h
-        src/farmer.c
-        src/farmer_player.h
-        src/farmer_player.cpp)
+        src/farmer/farmer.h
+        src/farmer/farmer.c
+        src/farmer/farmer_player.h
+        src/farmer/farmer_player.cpp)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
 

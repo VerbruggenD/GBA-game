@@ -7,9 +7,9 @@
 
 #include "Farm1Scene.h"
 
-#include "background.h"
-#include "farmer_player.h"
-#include "farmer.h" // temp for shared palette
+#include "../background.h"
+#include "../farmer/farmer_player.h"
+#include "../farmer/farmer.h" // temp for shared palette
 //#include "shared.h"
 
 std::vector<Background *> Farm1Scene::backgrounds() {

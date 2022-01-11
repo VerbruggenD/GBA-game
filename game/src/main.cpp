@@ -5,7 +5,7 @@
 #include <libgba-sprite-engine/palette/palette_manager.h>
 #include <libgba-sprite-engine/allocator.h>
 
-#include "SplashScene.h"
+#include "scenes/SplashScene.h"
 
 int main() {
      std::shared_ptr<GBAEngine> engine(new GBAEngine());
