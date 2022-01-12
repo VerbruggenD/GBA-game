@@ -58,21 +58,24 @@ unsigned short Farmer::getTile() {
 
 int Farmer::getNextTile(unsigned char moveCmd) {       // only for boundary detection
     auto actualWidth = this->layoutWidth+2;
-    auto currentIndex = getTile();
+
+    auto mapX = (this->farmerPosX+7)/8;
+    auto mapY = (this->farmerPosY+7)/8;
+    auto currentIndex = ((mapY*(layoutWidth+2))+mapX);
 
     switch (moveCmd)
     {
     case FACING_UP:
-        return currentIndex;
+        return currentIndex-(actualWidth);
         break;
     case FACING_RIGHT:
-        return currentIndex+2;
+        return currentIndex+1;
         break;
     case FACING_DOWN:
         return currentIndex+(actualWidth);
         break;
     case FACING_LEFT:
-        return currentIndex;
+        return currentIndex-1;
         break;
     
     default:
@@ -86,19 +89,19 @@ void Farmer::rotate(int direction) {
     {
     case FACING_UP:
         this->flipped = 0;
-        this->spriteFarmer->animateToFrame(1);
+        this->staticFrame = 1;
         break;
     case FACING_RIGHT:
         this->flipped = 0;
-        this->spriteFarmer->animateToFrame(4);
+        this->staticFrame = 4;
         break;
     case FACING_DOWN:
         this->flipped = 1;
-        this->spriteFarmer->animateToFrame(1);
+        this->staticFrame = 1;
         break;
     case FACING_LEFT:
         this->flipped = 1;
-        this->spriteFarmer->animateToFrame(4);
+        this->staticFrame = 4;
         break;
     
     default:
@@ -106,6 +109,7 @@ void Farmer::rotate(int direction) {
     }
     this->spriteFarmer->flipHorizontally(flipped);
     this->spriteFarmer->flipVertically(flipped);
+    this->spriteFarmer->animateToFrame(staticFrame);
 }
 
 void Farmer::move(u16 keys) {       // when rotating the key is pressed to long, move function is also ran
