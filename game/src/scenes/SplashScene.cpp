@@ -26,11 +26,8 @@ void SplashScene::load() {
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(backgroundPal, sizeof(backgroundPal)));
 
     REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;    // Only these windows active
-    //bg = std::unique_ptr<Background>(new Background(0, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
     bg = std::unique_ptr<Background>(new Background(1, backgroundTiles, sizeof(backgroundTiles), menuMap, sizeof(menuMap)));
     bg.get()->useMapScreenBlock(26);
-
-    //engine->getTimer()->start();
 }
 
  void SplashScene::tick(u16 keys) {

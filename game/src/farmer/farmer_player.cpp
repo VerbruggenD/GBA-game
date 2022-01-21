@@ -31,8 +31,6 @@ unsigned short Farmer::readMap(unsigned short mapIndex) {
 
 int Farmer::getOrientation() {                  // tested & works
 
-    //spriteFarmer->animateToFrame(0);  // for testing
-
     if (!(this->flipped) && (this->spriteFarmer->getCurrentFrame()<3)) {
         return FACING_UP;
     }

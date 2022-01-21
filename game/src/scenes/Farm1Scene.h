@@ -10,6 +10,12 @@
 
 #define START_INDEX 32*4
 
+#define NO_WALK 0
+#define WALK 1
+#define AZ_BARN 2
+#define AZ_HOME 5
+#define AZ_WATERT 4
+
 class Farm1Scene : public Scene{
 private:
     std::unique_ptr<Background> bg;
@@ -26,6 +32,7 @@ public:
 
     void load() override;
     void tick(u16 keys) override;
+    void Farm1Scene::selectZone(auto mapKey);
 
 };
 #endif //GBA_SPRITE_ENGINE_SCENE_1

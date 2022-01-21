@@ -12,10 +12,6 @@
 #define FACING_DOWN 2
 #define FACING_LEFT 3
 
-#define NO_WALK 0
-#define WALK 1
-#define ACTIVATION_ZONE 2
-
 class Farmer {
 private:
     unsigned char farmerPosX;
