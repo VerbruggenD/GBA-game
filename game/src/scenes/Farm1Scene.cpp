@@ -26,36 +26,43 @@ std::vector<Sprite *> Farm1Scene::sprites() {
 }
 
 void Farm1Scene::load() {
-
-    //engine.get()->disableText();
-    //engine.get()->enableText();
-
     foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(farmerPal, sizeof(farmerPal)));
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(backgroundPal, sizeof(backgroundPal)));
     
     farmer1 = (new Farmer(builder, START_INDEX, boundaryMap));
 
     REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;    // Only these windows active
-    //bg = std::unique_ptr<Background>(new Background(0, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
     bg = std::unique_ptr<Background>(new Background(1, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
     bg.get()->useMapScreenBlock(26);
-
-    //TextStream::instance().clear();
-    //TextStream::instance().setText("test", 10, 10);
 
     engine->getTimer()->start();
 }
 
- void Farm1Scene::tick(u16 keys) {
-     //TextStream::instance().setText(engine->getTimer()->to_string(), 18, 1);
-     //TextStream::instance().clear();
+void Farm1Scene::tick(u16 keys) {
 
-     int test = farmer1->getOrientation();      // testing of function getOrientation
-     TextStream::instance().setText(std::to_string(test),10,10);
+    if (keys & KEY_A) {
+        selectZone(farmer1->readMap(farmer1->getTile()));
+    }
 
-    // auto test = boundaryMap[0];     // test inlezen boundary map
-    // TextStream::instance().setText(std::to_string(test),10,10);
+    farmer1->move(keys);
+}
 
-     farmer1->move(keys);
-     engine->delay(1000);
+void Farm1Scene::selectZone(auto mapKey) {
+    switch (mapKey)
+        {
+        case AZ_BARN:
+            /* code */
+            break;
+
+        case AZ_HOME:
+
+            break;
+
+        case AZ_WATERT:
+
+            break;
+        
+        default:
+            break;
+        }
 }

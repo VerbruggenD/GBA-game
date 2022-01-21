@@ -25,9 +25,11 @@ int Farmer::getYcor(unsigned short mapIndex) {      // tested & works
     return ((mapIndex/(this->layoutWidth+2))*8);
 }
 
-int Farmer::getOrientation() {                  // tested & works
+unsigned short Farmer::readMap(unsigned short mapIndex) {
+    return (this->mapLayout[mapIndex]);
+}
 
-    //spriteFarmer->animateToFrame(0);  // for testing
+int Farmer::getOrientation() {                  // tested & works
 
     if (!(this->flipped) && (this->spriteFarmer->getCurrentFrame()<3)) {
         return FACING_UP;
@@ -46,8 +48,19 @@ int Farmer::getOrientation() {                  // tested & works
     }
 }
 
-int Farmer::getMapIndex(unsigned short currentIndex, unsigned char moveCmd) {       
+unsigned short Farmer::getTile() {
+    auto mapX = this->farmerPosX/8;
+    auto mapY = this->farmerPosY/8;
+    return ((mapY*(layoutWidth+2))+mapX);
+}
+
+int Farmer::getNextTile(unsigned char moveCmd) {       // only for boundary detection
     auto actualWidth = this->layoutWidth+2;
+
+    auto mapX = (this->farmerPosX+7)/8;
+    auto mapY = (this->farmerPosY+7)/8;
+    auto currentIndex = ((mapY*(layoutWidth+2))+mapX);
+
     switch (moveCmd)
     {
     case FACING_UP:
@@ -74,19 +87,19 @@ void Farmer::rotate(int direction) {
     {
     case FACING_UP:
         this->flipped = 0;
-        this->spriteFarmer->animateToFrame(1);
+        this->staticFrame = 1;
         break;
     case FACING_RIGHT:
         this->flipped = 0;
-        this->spriteFarmer->animateToFrame(4);
+        this->staticFrame = 4;
         break;
     case FACING_DOWN:
         this->flipped = 1;
-        this->spriteFarmer->animateToFrame(1);
+        this->staticFrame = 1;
         break;
     case FACING_LEFT:
         this->flipped = 1;
-        this->spriteFarmer->animateToFrame(4);
+        this->staticFrame = 4;
         break;
     
     default:
@@ -94,9 +107,10 @@ void Farmer::rotate(int direction) {
     }
     this->spriteFarmer->flipHorizontally(flipped);
     this->spriteFarmer->flipVertically(flipped);
+    this->spriteFarmer->animateToFrame(staticFrame);
 }
 
-void Farmer::move(u16 keys) {
+void Farmer::move(u16 keys) {       // when rotating the key is pressed to long, move function is also ran
 
     if (keys & KEY_ANY) {
 
@@ -107,37 +121,58 @@ void Farmer::move(u16 keys) {
         {
         case KEY_LEFT:
             if (this->getOrientation() == FACING_LEFT) {
-                // check boundary map
-                // move left 1 tile
-                this->spriteFarmer->animateToFrame(3);
-                this->staticFrame = 4;
+                if (this->readMap(this->getNextTile(FACING_LEFT))) {
+                    this->spriteFarmer->animateToFrame(5);
+                    this->staticFrame = 4;
+                    this->spriteFarmer->setVelocity(-1,0);
+                }
+                else {
+                    this->spriteFarmer->setVelocity(0,0);
+                    break;
+                }
             }
             else this->rotate(FACING_LEFT);
             break;
         case KEY_RIGHT:
             if (this->getOrientation() == FACING_RIGHT) {
-                // check boundary map
-                // move right 1 tile
-                this->spriteFarmer->animateToFrame(3);
-                this->staticFrame = 4;
+                if (this->readMap(this->getNextTile(FACING_RIGHT))) {
+                    this->spriteFarmer->animateToFrame(5);
+                    this->staticFrame = 4;
+                    this->spriteFarmer->setVelocity(1,0);
+                }
+                else {
+                    this->spriteFarmer->setVelocity(0,0);
+                    break;
+                }              
             }
             else this->rotate(FACING_RIGHT);
             break;
         case KEY_UP:
             if (this->getOrientation() == FACING_UP) {
-                // check boundary map
-                // move up 1 tile
-                this->spriteFarmer->animateToFrame(2);
-                this->staticFrame = 1;
+                if (this->readMap(this->getNextTile(FACING_UP))) {
+                    this->spriteFarmer->animateToFrame(2);
+                    this->staticFrame = 1;
+                    this->spriteFarmer->setVelocity(0,-1);
+                }
+                else {
+                    this->spriteFarmer->setVelocity(0,0);
+                    break;
+                }
+                
             }
             else this->rotate(FACING_UP);
             break;
         case KEY_DOWN:
             if (this->getOrientation() == FACING_DOWN) {
-                // check boundary map
-                // move down 1 tile
-                this->spriteFarmer->animateToFrame(2);
-                this->staticFrame = 1;
+                if (this->readMap(this->getNextTile(FACING_DOWN))) {
+                    this->spriteFarmer->animateToFrame(2);
+                    this->staticFrame = 1;
+                    this->spriteFarmer->setVelocity(0,1);
+                }
+                else {
+                    this->spriteFarmer->setVelocity(0,0);
+                    break;
+                }               
             }
             else this->rotate(FACING_DOWN);
             break;
@@ -145,5 +180,9 @@ void Farmer::move(u16 keys) {
         default:
             break;
         }
+    }
+    else {
+        this->spriteFarmer->setVelocity(0,0);
+        this->spriteFarmer->animateToFrame(staticFrame);
     }
 }
