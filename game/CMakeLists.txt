@@ -8,6 +8,8 @@ add_executable(${PROJECT_NAME}.elf
         src/scenes/Farm1Scene.cpp
         src/background.h
         src/background.c
+        src/field.cpp
+        src/field.h
         src/farmer/farmer.h
         src/farmer/farmer.c
         src/farmer/farmer_player.h
