@@ -34,7 +34,7 @@ void Farm1Scene::load() {
     farmer1 = (new Farmer(builder, START_INDEX, boundaryMap));
 
     field1 = (new Field());
-    field1->plant(SOWN, 16, 128);
+    field1->plant(SOWN, 16, 72);
 
     REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;    // Only these windows active
     bg = std::unique_ptr<Background>(new Background(1, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
