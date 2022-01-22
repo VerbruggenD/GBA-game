@@ -32,7 +32,6 @@ public:
 
     void load() override;
     void tick(u16 keys) override;
-    void Farm1Scene::selectZone(auto mapKey);
 
 };
 #endif //GBA_SPRITE_ENGINE_SCENE_1

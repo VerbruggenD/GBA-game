@@ -41,28 +41,7 @@ void Farm1Scene::load() {
 void Farm1Scene::tick(u16 keys) {
 
     if (keys & KEY_A) {
-        selectZone(farmer1->readMap(farmer1->getTile()));
     }
 
     farmer1->move(keys);
-}
-
-void Farm1Scene::selectZone(auto mapKey) {
-    switch (mapKey)
-        {
-        case AZ_BARN:
-            /* code */
-            break;
-
-        case AZ_HOME:
-
-            break;
-
-        case AZ_WATERT:
-
-            break;
-        
-        default:
-            break;
-        }
 }
