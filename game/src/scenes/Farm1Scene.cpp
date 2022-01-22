@@ -11,6 +11,7 @@
 #include "../farmer/farmer_player.h"
 //#include "../farmer/farmer.h" // temp for shared palette
 #include "../shared.h"
+#include "../field/field.h"
 
 std::vector<Background *> Farm1Scene::backgrounds() {
     return {
@@ -20,7 +21,8 @@ std::vector<Background *> Farm1Scene::backgrounds() {
 
 std::vector<Sprite *> Farm1Scene::sprites() {
     return {
-        farmer1->getSprite()
+        farmer1->getSprite(),
+        field1->crop->getSprite()
     };
 
 }
@@ -30,6 +32,9 @@ void Farm1Scene::load() {
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(backgroundPal, sizeof(backgroundPal)));
     
     farmer1 = (new Farmer(builder, START_INDEX, boundaryMap));
+
+    field1 = (new Field());
+    field1->plant(SOWN, 16, 128);
 
     REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;    // Only these windows active
     bg = std::unique_ptr<Background>(new Background(1, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));

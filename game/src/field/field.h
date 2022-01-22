@@ -18,12 +18,13 @@ private:
     char water = 0;
 
     SpriteBuilder<Sprite> builder;
-    Crop* crop;
+
 public:
     char whichCrop();
     void updateField();
-    void plant(char whichCrop);
+    void plant(char whichCrop, int x, int y);
     void harvest();
+    Crop* crop;
 };
 
 #endif

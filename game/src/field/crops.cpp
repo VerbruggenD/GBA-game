@@ -1,9 +1,12 @@
 #include "crops.h"
+#include "crops_data.h"
 
-Crop::Crop(SpriteBuilder<Sprite> builder, std::unique_ptr<Sprite> *src, int x, int y, unsigned char whichCrop) {
+Crop::Crop(SpriteBuilder<Sprite> builder, int x, int y, unsigned char whichCrop) {
     this->CropSprite = builder
         .withLocation(x,y)
         .withSize(SIZE_16_16)
-        .buildWithDataOf(*src->get());
+        .withData(CropsTiles, sizeof(CropsTiles))
+        .withinBounds()
+        .buildPtr();
     this->whichCrop = whichCrop;
 }

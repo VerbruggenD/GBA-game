@@ -7,6 +7,7 @@
 #include <libgba-sprite-engine/background/background.h>
 
 #include "../farmer/farmer_player.h"
+#include "../field/field.h"
 
 #define START_INDEX 32*4
 
@@ -23,6 +24,7 @@ private:
 
     SpriteBuilder<Sprite> builder;
     Farmer* farmer1;
+    Field* field1;
 
 public:
     Farm1Scene(std::shared_ptr<GBAEngine> engine) : Scene(engine){}

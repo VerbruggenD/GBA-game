@@ -1,29 +1,35 @@
 #include "field.h"
+#include "crops.h"
 
 char Field::whichCrop(){
     if (status)
     {
         return crop->whichCrop;
     }
-    return NULL;
+    return 0;
 };
 
 void Field::updateField(){
     if (water)
     {
-        if (status<3)
+        if (status<2)
         {
             status++;
+            crop->CropSprite->animateToFrame(status+1);
         }
+        else if (status == 2)
+        {
+            status++;
+            crop->CropSprite->animateToFrame(whichCrop()+3);
+        }
+        
     }
 };
 
 void Field::plant(char whichCrop, int x, int y){
     if (!status)
     {
-        
-        Crop* crop = new Crop(builder,, x, y);
-        crop->whichCrop = whichCrop;
+        crop = (new Crop(builder, x, y, whichCrop));
         status = GEPLANT;
     }
 };

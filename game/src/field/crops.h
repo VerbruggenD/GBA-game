@@ -18,9 +18,10 @@ private:
     
 public:
     unsigned char whichCrop;    // which crop is planted
+    Sprite * getSprite() const {return CropSprite.get();}
 
     std::unique_ptr<Sprite> CropSprite;
-    Crop(SpriteBuilder<Sprite> builder, std::unique_ptr<Sprite> *src, int x, int y, unsigned char whichCrop);
+    Crop(SpriteBuilder<Sprite> builder, int x, int y, unsigned char whichCrop);
 };
 
 #endif //GBA_GAME_CROPS_H
