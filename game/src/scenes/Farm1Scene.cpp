@@ -9,8 +9,8 @@
 
 #include "../background.h"
 #include "../farmer/farmer_player.h"
-#include "../farmer/farmer.h" // temp for shared palette
-//#include "shared.h"
+//#include "../farmer/farmer.h" // temp for shared palette
+#include "../shared.h"
 
 std::vector<Background *> Farm1Scene::backgrounds() {
     return {
@@ -26,7 +26,7 @@ std::vector<Sprite *> Farm1Scene::sprites() {
 }
 
 void Farm1Scene::load() {
-    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(farmerPal, sizeof(farmerPal)));
+    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(sharedPal, sizeof(sharedPal)));
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(backgroundPal, sizeof(backgroundPal)));
     
     farmer1 = (new Farmer(builder, START_INDEX, boundaryMap));

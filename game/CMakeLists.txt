@@ -8,16 +8,18 @@ add_executable(${PROJECT_NAME}.elf
         src/scenes/Farm1Scene.cpp
         src/background.h
         src/background.c
-        src/field/field.cpp
-        src/field/field.h
-        src/field/crops.h
-        src/field/crops.cpp
-        src/field/crops_data.h
-        src/field/crops_data.cpp
+        # src/field/field.cpp
+        # src/field/field.h
+        # src/field/crops.h
+        # src/field/crops.cpp
+        # src/field/crops_data.h
+        # src/field/crops_data.c
         src/farmer/farmer.h
         src/farmer/farmer.c
         src/farmer/farmer_player.h
-        src/farmer/farmer_player.cpp)
+        src/farmer/farmer_player.cpp
+        src/shared.h
+        src/shared.c)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
 

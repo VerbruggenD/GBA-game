@@ -4,10 +4,11 @@
 //======================================================================
 //
 //	Crops, 16x96@8, 
+//	Transparent color : 00,00,00
 //	+ 24 tiles not compressed
 //	Total size: 1536 = 1536
 //
-//	Time-stamp: 2022-01-22, 16:09:08
+//	Time-stamp: 2022-01-22, 16:25:17
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.16
 //	( http://www.coranac.com/projects/#grit )
 //
