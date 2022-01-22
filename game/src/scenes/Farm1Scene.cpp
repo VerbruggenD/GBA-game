@@ -8,9 +8,9 @@
 #include "Farm1Scene.h"
 
 #include "../background.h"
-#include "../farmer/farmer_player.h"
 #include "../farmer/farmer.h" // temp for shared palette
 //#include "shared.h"
+#include "../farm.h"
 
 std::vector<Background *> Farm1Scene::backgrounds() {
     return {
@@ -20,7 +20,7 @@ std::vector<Background *> Farm1Scene::backgrounds() {
 
 std::vector<Sprite *> Farm1Scene::sprites() {
     return {
-        farmer1->getSprite()
+        farm->farmer->getSprite()
     };
 
 }
@@ -29,7 +29,8 @@ void Farm1Scene::load() {
     foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(farmerPal, sizeof(farmerPal)));
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(backgroundPal, sizeof(backgroundPal)));
     
-    farmer1 = (new Farmer(builder, START_INDEX, boundaryMap));
+    //farmer1 = (new Farmer(builder, START_INDEX, boundaryMap));
+    farm = (new Farm());
 
     REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;    // Only these windows active
     bg = std::unique_ptr<Background>(new Background(1, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
@@ -41,28 +42,8 @@ void Farm1Scene::load() {
 void Farm1Scene::tick(u16 keys) {
 
     if (keys & KEY_A) {
-        selectZone(farmer1->readMap(farmer1->getTile()));
+        farm->selectZone();
     }
 
-    farmer1->move(keys);
-}
-
-void Farm1Scene::selectZone(auto mapKey) {
-    switch (mapKey)
-        {
-        case AZ_BARN:
-            /* code */
-            break;
-
-        case AZ_HOME:
-
-            break;
-
-        case AZ_WATERT:
-
-            break;
-        
-        default:
-            break;
-        }
+    farm->farmer->move(keys);
 }

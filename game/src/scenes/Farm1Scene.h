@@ -6,15 +6,8 @@
 #include <libgba-sprite-engine/scene.h>
 #include <libgba-sprite-engine/background/background.h>
 
-#include "../farmer/farmer_player.h"
+#include "../farm.h"
 
-#define START_INDEX 32*4
-
-#define NO_WALK 0
-#define WALK 1
-#define AZ_BARN 2
-#define AZ_HOME 5
-#define AZ_WATERT 4
 
 class Farm1Scene : public Scene{
 private:
@@ -22,7 +15,7 @@ private:
     bool pressingAorB = false;
 
     SpriteBuilder<Sprite> builder;
-    Farmer* farmer1;
+    Farm* farm;
 
 public:
     Farm1Scene(std::shared_ptr<GBAEngine> engine) : Scene(engine){}
@@ -32,7 +25,6 @@ public:
 
     void load() override;
     void tick(u16 keys) override;
-    void Farm1Scene::selectZone(auto mapKey);
 
 };
 #endif //GBA_SPRITE_ENGINE_SCENE_1
