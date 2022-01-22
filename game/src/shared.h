@@ -1,11 +1,11 @@
 
-//{{BLOCK(boer_full)
+//{{BLOCK(shared)
 
 //======================================================================
 //
-//	boer_full, 16x96@8, 
-//	+ 24 tiles not compressed
-//	Total size: 1536 = 1536
+//	shared, 16x16@8, 
+//	+ palette 131 entries, not compressed
+//	Total size: 262 = 262
 //
 //	Time-stamp: 2022-01-22, 16:09:08
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.16
@@ -13,12 +13,12 @@
 //
 //======================================================================
 
-#ifndef GRIT_BOER_FULL_H
-#define GRIT_BOER_FULL_H
+#ifndef GRIT_SHARED_H
+#define GRIT_SHARED_H
 
-#define boer_fullTilesLen 1536
-extern const unsigned int farmerTiles[384];
+#define sharedPalLen 262
+extern const unsigned short sharedPal[132];
 
-#endif // GRIT_BOER_FULL_H
+#endif // GRIT_SHARED_H
 
-//}}BLOCK(boer_full)
+//}}BLOCK(shared)

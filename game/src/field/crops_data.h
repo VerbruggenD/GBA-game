@@ -1,9 +1,9 @@
 
-//{{BLOCK(boer_full)
+//{{BLOCK(Crops)
 
 //======================================================================
 //
-//	boer_full, 16x96@8, 
+//	Crops, 16x96@8, 
 //	+ 24 tiles not compressed
 //	Total size: 1536 = 1536
 //
@@ -13,12 +13,12 @@
 //
 //======================================================================
 
-#ifndef GRIT_BOER_FULL_H
-#define GRIT_BOER_FULL_H
+#ifndef GRIT_CROPS_H
+#define GRIT_CROPS_H
 
-#define boer_fullTilesLen 1536
-extern const unsigned int farmerTiles[384];
+#define CropsTilesLen 1536
+extern const unsigned int CropsTiles[384];
 
-#endif // GRIT_BOER_FULL_H
+#endif // GRIT_CROPS_H
 
-//}}BLOCK(boer_full)
+//}}BLOCK(Crops)
