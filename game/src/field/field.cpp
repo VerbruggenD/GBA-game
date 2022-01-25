@@ -24,7 +24,7 @@ void Field::updateField(){
         else if (status == GESPROUT)
         {
             status = VOLGROEIT;
-            crop->CropSprite->animateToFrame(whichCrop()+4);
+            crop->CropSprite->animateToFrame(whichCrop()+3);
         }
         
     }
