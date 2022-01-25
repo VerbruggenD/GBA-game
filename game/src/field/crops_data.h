@@ -4,13 +4,12 @@
 //======================================================================
 //
 //	Crops, 32x224@8, 
-//	+ palette 256 entries, not compressed
-//	+ 77 tiles (t|f|p reduced) not compressed
-//	+ regular map (flat), not compressed, 4x28 
-//	Total size: 512 + 4928 + 224 = 5664
+//	Transparent color : 00,00,00
+//	+ 112 tiles not compressed
+//	Total size: 7168 = 7168
 //
-//	Time-stamp: 2022-01-25, 13:55:13
-//	Exported by Cearn's GBA Image Transmogrifier, v0.8.6
+//	Time-stamp: 2022-01-25, 15:41:59
+//	Exported by Cearn's GBA Image Transmogrifier, v0.8.16
 //	( http://www.coranac.com/projects/#grit )
 //
 //======================================================================
@@ -18,14 +17,8 @@
 #ifndef GRIT_CROPS_H
 #define GRIT_CROPS_H
 
-#define CropsTilesLen 4928
-extern const unsigned short CropsTiles[2464];
-
-#define CropsMapLen 224
-extern const unsigned short CropsMap[112];
-
-#define CropsPalLen 512
-extern const unsigned short CropsPal[256];
+#define CropsTilesLen 7168
+extern const unsigned int CropsTiles[1792];
 
 #endif // GRIT_CROPS_H
 
