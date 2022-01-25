@@ -8,7 +8,7 @@
 #include "background.h"
 
 Farm::Farm(void) {
-    Barn* barn = new Barn(0,0,0);
+    //Barn* barn = new Barn(0,0);
     farmer = (new Farmer(builder, START_INDEX, boundaryMap));
 }
 
@@ -25,9 +25,12 @@ void Farm::selectZone() {
     switch (mapKey)
         {
         case AZ_BARN:
+        {
             TextStream::instance().setText("barn",10,10);
+            std::shared_ptr<Menu> menu(new Menu("test1","test2","test3","test4"));
+            menu->showMenu();
             break;
-
+        }
         case AZ_HOME:
             TextStream::instance().setText("home",10,10);
             break;

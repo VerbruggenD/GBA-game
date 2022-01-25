@@ -24,7 +24,7 @@ public:
     void selectZone();
     void load();
     Farmer* farmer;
-    Barn* barn;
+    //Barn* barn;
 
     Farm();
 };

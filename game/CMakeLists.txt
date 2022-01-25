@@ -15,7 +15,10 @@ add_executable(${PROJECT_NAME}.elf
         src/farm.h
         src/farm.cpp
         src/buildings/barn.h
-        src/buildings/barn.cpp)
+        src/buildings/barn.cpp
+        src/buildings/building.h
+        src/buildings/menu.h
+        src/buildings/menu.cpp)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
 
