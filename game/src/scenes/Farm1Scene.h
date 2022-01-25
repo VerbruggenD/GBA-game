@@ -25,6 +25,17 @@ private:
     SpriteBuilder<Sprite> builder;
     Farmer* farmer1;
     Field* field1;
+    Field* field2;
+    Field* field3;
+    Field* field4;
+    // Field* field5;
+    // Field* field6;
+    // Field* field7;
+    // Field* field8;
+    // Field* field9;
+    // Field* field10;
+    // Field* field11;
+    // Field* field12;
 
 public:
     Farm1Scene(std::shared_ptr<GBAEngine> engine) : Scene(engine){}

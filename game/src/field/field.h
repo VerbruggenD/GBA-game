@@ -15,15 +15,17 @@
 class Field {
 private:
     char status = LEEG;
-    char water = 0;
+    char water = 1;
 
     SpriteBuilder<Sprite> builder;
 
 public:
     char whichCrop();
     void updateField();
-    void plant(char whichCrop, int x, int y);
+    void buildCrop(char x, char y);
+    void plant(char whichCrop);
     void harvest();
+    void action(char whichCrop);
     Crop* crop;
 };
 

@@ -33,7 +33,7 @@ void SplashScene::load() {
 
  void SplashScene::tick(u16 keys) {
     if (keys & KEY_ANY) {
-        for (size_t i = 0; i < 800000; i++){
+        for (size_t i = 0; i < 80000; i++){
             if (i==1){
                 TextStream::instance().setText("entered: starting farm", 9, 4);
             }

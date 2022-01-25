@@ -12,32 +12,55 @@ char Field::whichCrop(){
 void Field::updateField(){
     if (water)
     {
-        if (status<2)
+        if (status == LEEG)
         {
-            status++;
-            crop->CropSprite->animateToFrame(status+1);
+            return;
         }
-        else if (status == 2)
+        else if (status == GEPLANT)
         {
-            status++;
-            crop->CropSprite->animateToFrame(whichCrop()+3);
+            status = GESPROUT;
+            crop->CropSprite->animateToFrame(GESPROUT);
+        }
+        else if (status == GESPROUT)
+        {
+            status = VOLGROEIT;
+            crop->CropSprite->animateToFrame(whichCrop()+4);
         }
         
     }
 };
 
-void Field::plant(char whichCrop, int x, int y){
-    if (!status)
+void Field::buildCrop(char x, char y){
+    crop = (new Crop(builder, x, y, 0));
+    crop->CropSprite->animateToFrame(LEEG);
+}
+
+void Field::plant(char whichCrop){
+    if (status == LEEG)
     {
-        crop = (new Crop(builder, x, y, whichCrop));
+        crop->whichCrop = whichCrop;
+        crop->CropSprite->animateToFrame(GEPLANT);
         status = GEPLANT;
     }
 };
 
 void Field::harvest(){
-    if (status == 3)
+    if (status == VOLGROEIT)
     {
-        delete crop;
+        crop->CropSprite->animateToFrame(LEEG);
         status = LEEG;
     }
 };
+
+void Field::action(char wichCrop){
+    if (status==LEEG)
+    {
+        Field::plant(wichCrop);
+    }
+    else if (status==VOLGROEIT)
+    {
+        Field::harvest();
+    }
+    
+    
+}
