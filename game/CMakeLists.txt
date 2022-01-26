@@ -24,7 +24,7 @@ add_executable(${PROJECT_NAME}.elf
         src/buildings/barn.cpp
         src/buildings/building.h
         src/buildings/menu.h
-        src/buildings/menu.cpp)
+        src/buildings/menu.cpp
         src/shared.h
         src/shared.c)
 
