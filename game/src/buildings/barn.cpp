@@ -4,14 +4,19 @@
 #include "menu.h"
 #include "building.h"
 
-Barn::Barn(unsigned char seeds, unsigned char crops) :
-        menu(std::shared_ptr<Menu>(new Menu())) {
+Barn::Barn(unsigned char seeds, unsigned char crops) {
     this->seeds = seeds;
     this->crops = crops;
 }
 
 void Barn::enter() {
-    menu->item1 = "test";
+    // vervangen door generic menu class
+    this->barnActivated = true;
+    TextStream::instance().setText("Crops: " + std::to_string(this->crops), MENU_ROW_1, MENU_COL);
+    TextStream::instance().setText("Seeds: " + std::to_string(this->seeds),MENU_ROW_2, MENU_COL);
+    while(this->barnActivated) {
+        
+    }
 }
 
 void Barn::exit() {}

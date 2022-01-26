@@ -12,8 +12,6 @@ add_executable(${PROJECT_NAME}.elf
         src/farmer/farmer.c
         src/farmer/farmer_player.h
         src/farmer/farmer_player.cpp
-        src/farm.h
-        src/farm.cpp
         src/buildings/barn.h
         src/buildings/barn.cpp
         src/buildings/building.h
