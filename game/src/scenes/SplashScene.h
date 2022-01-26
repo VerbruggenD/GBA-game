@@ -8,8 +8,6 @@
 
 class SplashScene : public Scene {
 private:
-    std::unique_ptr<Background> bg;
-    bool pressingAorB = false;
 
 public:
     SplashScene(std::shared_ptr<GBAEngine> engine) : Scene(engine) {}

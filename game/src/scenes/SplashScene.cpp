@@ -8,13 +8,8 @@
 #include "SplashScene.h"
 #include "Farm1Scene.h"
 
-#include "../Startscreen.h"
-//#include "shared.h"
-
 std::vector<Background *> SplashScene::backgrounds() {
-    return {
-        bg.get()
-    };
+    return {};
 }
 
 std::vector<Sprite *> SplashScene::sprites() {
@@ -23,11 +18,8 @@ std::vector<Sprite *> SplashScene::sprites() {
 
 void SplashScene::load() {
 
-    backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(StartscreenPal, sizeof(StartscreenPal)));
-
     REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;    // Only these windows active
-    bg = std::unique_ptr<Background>(new Background(1, StartscreenTiles, sizeof(StartscreenTiles), StartscreenMap, sizeof(StartscreenMap)));
-    bg.get()->useMapScreenBlock(26);
+    
     TextStream::instance().setText("   > New Game             ", 9, 6);
 }
 

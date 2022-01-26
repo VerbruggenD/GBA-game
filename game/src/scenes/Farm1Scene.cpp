@@ -48,8 +48,6 @@ void Farm1Scene::load() {
 
     farmer = (new Farmer(builder, START_TILE, boundaryMap));
     barn = new Barn(10,10);
-
-    //engine->getTimer()->start();
 }
 
 void Farm1Scene::tick(u16 keys) {

@@ -20,8 +20,6 @@ private:
     bool barnActivated = 0;
 
 public:
-    void nightUpdate();
-
     void enter() override;
     void exit() override;
 

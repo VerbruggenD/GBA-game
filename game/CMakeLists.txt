@@ -8,8 +8,6 @@ add_executable(${PROJECT_NAME}.elf
         src/scenes/Farm1Scene.cpp
         src/background.h
         src/background.c
-        src/Startscreen.h
-        src/Startscreen.c
         src/field/field.cpp
         src/field/field.h
         src/field/crops.h
@@ -23,8 +21,6 @@ add_executable(${PROJECT_NAME}.elf
         src/buildings/barn.h
         src/buildings/barn.cpp
         src/buildings/building.h
-        src/buildings/menu.h
-        src/buildings/menu.cpp
         src/shared.h
         src/shared.c)
 
