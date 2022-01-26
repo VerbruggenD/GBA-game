@@ -8,6 +8,7 @@
 
 #include "../farmer/farmer_player.h"
 #include "../buildings/barn.h"
+#include "../field/field.h"
 
 #define START_TILE 32*4
 
@@ -25,6 +26,10 @@ private:
     SpriteBuilder<Sprite> builder;
     Farmer* farmer;
     Barn* barn;
+    Field* field1;
+    Field* field2;
+    Field* field3;
+    Field* field4;
 
 public:
     Farm1Scene(std::shared_ptr<GBAEngine> engine) : Scene(engine){}

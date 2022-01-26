@@ -7,10 +7,10 @@
 #include "Farm1Scene.h"
 
 #include "../background.h"
-#include "../farmer/farmer.h" // temp for shared palette
-//#include "shared.h"
-//#include "../farm.h"
 #include "../buildings/barn.h"
+#include "../farmer/farmer_player.h"
+#include "../shared.h"
+#include "../field/field.h"
 
 std::vector<Background *> Farm1Scene::backgrounds() {
     return {
@@ -20,14 +20,27 @@ std::vector<Background *> Farm1Scene::backgrounds() {
 
 std::vector<Sprite *> Farm1Scene::sprites() {
     return {
-        farmer->getSprite()
+        farmer->getSprite(),
+        field1->crop->getSprite(),
+        field2->crop->getSprite(),
+        field3->crop->getSprite(),
+        field4->crop->getSprite()
     };
 
 }
 
 void Farm1Scene::load() {
-    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(farmerPal, sizeof(farmerPal)));
+    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(sharedPal, sizeof(sharedPal)));
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(backgroundPal, sizeof(backgroundPal)));
+
+    field1 = (new Field());
+    field2 = (new Field());
+    field3 = (new Field());
+    field4 = (new Field());
+    field1->buildCrop(88, 72);
+    field2->buildCrop(120, 72);
+    field3->buildCrop(88, 104);
+    field4->buildCrop(120, 104);
 
     REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;    // Only these windows active
     bg = std::unique_ptr<Background>(new Background(1, backgroundTiles, sizeof(backgroundTiles), backgroundMap, sizeof(backgroundMap)));
@@ -68,16 +81,41 @@ void Farm1Scene::selectZone(u16 keys) {
             barn->enter();
             break;
         }
-        case AZ_HOME:
-            TextStream::instance().setText("home",10,10);
-            break;
+        // case AZ_HOME:
+        //     TextStream::instance().setText("home",10,10);
+        //     break;
 
         case AZ_WATERT:
             TextStream::instance().setText("watertower",10,10);
             break;
-        
+        // case 4:
+            
+        //     break;
+        case AZ_HOME:
+            field1->updateField();
+            field2->updateField();
+            field3->updateField();
+            field4->updateField();
+            break;
+        case 10:
+            field1->action(SOWN);
+            break;
+        case 11:
+            field2->action(SOWN);
+            break;
+        case 12:
+            field3->action(SOWN);
+            break;
+        case 13:
+            field4->action(SOWN);
+            break;        
         default:
             TextStream::instance().clear();
             break;
+        }
+        for (size_t i = 0; i < 40000; i++){
+            if (i==1) {
+                TextStream::instance().setText("", 9, 4);
+            }
         }
 }
