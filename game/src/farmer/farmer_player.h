@@ -16,7 +16,7 @@ class Farmer {
 private:
     unsigned char farmerPosX;
     unsigned char farmerPosY;
-    bool moving;
+    bool moving = true;
     bool flipped;
     unsigned char staticFrame;
 
@@ -47,6 +47,8 @@ public:
     int getYcor(unsigned short mapIndex);
     unsigned short readMap(unsigned short mapIndex);
     unsigned short getTile();
+    void setMoving(bool moving) {this->moving = moving;};
+    void hide(bool hide);
 
     Farmer(SpriteBuilder<Sprite> builder, unsigned short mapIndex, const unsigned short *mapLayout);
 };

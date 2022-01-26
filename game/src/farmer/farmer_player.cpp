@@ -110,79 +110,90 @@ void Farmer::rotate(int direction) {
     this->spriteFarmer->animateToFrame(staticFrame);
 }
 
-void Farmer::move(u16 keys) {       // when rotating the key is pressed to long, move function is also ran
-
-    if (keys & KEY_ANY) {
-
-        this->farmerPosX = spriteFarmer->getX();
-        this->farmerPosY = spriteFarmer->getY();
-
-        switch (keys)
-        {
-        case KEY_LEFT:
-            if (this->getOrientation() == FACING_LEFT) {
-                if (this->readMap(this->getNextTile(FACING_LEFT))) {
-                    this->spriteFarmer->animateToFrame(5);
-                    this->staticFrame = 4;
-                    this->spriteFarmer->setVelocity(-1,0);
-                }
-                else {
-                    this->spriteFarmer->setVelocity(0,0);
-                    break;
-                }
-            }
-            else this->rotate(FACING_LEFT);
-            break;
-        case KEY_RIGHT:
-            if (this->getOrientation() == FACING_RIGHT) {
-                if (this->readMap(this->getNextTile(FACING_RIGHT))) {
-                    this->spriteFarmer->animateToFrame(5);
-                    this->staticFrame = 4;
-                    this->spriteFarmer->setVelocity(1,0);
-                }
-                else {
-                    this->spriteFarmer->setVelocity(0,0);
-                    break;
-                }              
-            }
-            else this->rotate(FACING_RIGHT);
-            break;
-        case KEY_UP:
-            if (this->getOrientation() == FACING_UP) {
-                if (this->readMap(this->getNextTile(FACING_UP))) {
-                    this->spriteFarmer->animateToFrame(2);
-                    this->staticFrame = 1;
-                    this->spriteFarmer->setVelocity(0,-1);
-                }
-                else {
-                    this->spriteFarmer->setVelocity(0,0);
-                    break;
-                }
-                
-            }
-            else this->rotate(FACING_UP);
-            break;
-        case KEY_DOWN:
-            if (this->getOrientation() == FACING_DOWN) {
-                if (this->readMap(this->getNextTile(FACING_DOWN))) {
-                    this->spriteFarmer->animateToFrame(2);
-                    this->staticFrame = 1;
-                    this->spriteFarmer->setVelocity(0,1);
-                }
-                else {
-                    this->spriteFarmer->setVelocity(0,0);
-                    break;
-                }               
-            }
-            else this->rotate(FACING_DOWN);
-            break;
-        
-        default:
-            break;
-        }
+void Farmer::hide(bool hide) {
+    if (hide) {
+        this->spriteFarmer->moveTo(-30,-30);
     }
     else {
-        this->spriteFarmer->setVelocity(0,0);
-        this->spriteFarmer->animateToFrame(staticFrame);
+        this->spriteFarmer->moveTo(this->farmerPosX,this->farmerPosY);
+    }
+} 
+
+void Farmer::move(u16 keys) {       // when rotating the key is pressed to long, move function is also ran
+
+    if (this->moving) {
+        if (keys & KEY_ANY) {
+
+            this->farmerPosX = spriteFarmer->getX();
+            this->farmerPosY = spriteFarmer->getY();
+
+            switch (keys)
+            {
+            case KEY_LEFT:
+                if (this->getOrientation() == FACING_LEFT) {
+                    if (this->readMap(this->getNextTile(FACING_LEFT))) {
+                        this->spriteFarmer->animateToFrame(5);
+                        this->staticFrame = 4;
+                        this->spriteFarmer->setVelocity(-1,0);
+                    }
+                    else {
+                        this->spriteFarmer->setVelocity(0,0);
+                        break;
+                    }
+                }
+                else this->rotate(FACING_LEFT);
+                break;
+            case KEY_RIGHT:
+                if (this->getOrientation() == FACING_RIGHT) {
+                    if (this->readMap(this->getNextTile(FACING_RIGHT))) {
+                        this->spriteFarmer->animateToFrame(5);
+                        this->staticFrame = 4;
+                        this->spriteFarmer->setVelocity(1,0);
+                    }
+                    else {
+                        this->spriteFarmer->setVelocity(0,0);
+                        break;
+                    }              
+                }
+                else this->rotate(FACING_RIGHT);
+                break;
+            case KEY_UP:
+                if (this->getOrientation() == FACING_UP) {
+                    if (this->readMap(this->getNextTile(FACING_UP))) {
+                        this->spriteFarmer->animateToFrame(2);
+                        this->staticFrame = 1;
+                        this->spriteFarmer->setVelocity(0,-1);
+                    }
+                    else {
+                        this->spriteFarmer->setVelocity(0,0);
+                        break;
+                    }
+                
+                }
+                else this->rotate(FACING_UP);
+                break;
+            case KEY_DOWN:
+                if (this->getOrientation() == FACING_DOWN) {
+                    if (this->readMap(this->getNextTile(FACING_DOWN))) {
+                        this->spriteFarmer->animateToFrame(2);
+                        this->staticFrame = 1;
+                        this->spriteFarmer->setVelocity(0,1);
+                    }
+                    else {
+                        this->spriteFarmer->setVelocity(0,0);
+                        break;
+                    }               
+                }
+                else this->rotate(FACING_DOWN);
+                break;
+        
+            default:
+                break;
+            }
+        }
+        else {
+            this->spriteFarmer->setVelocity(0,0);
+            this->spriteFarmer->animateToFrame(staticFrame);
+        }
     }
 }

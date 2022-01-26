@@ -5,18 +5,20 @@
 #include <libgba-sprite-engine/gba/tonc_memmap.h>
 
 #include "building.h"
-#include "menu.h"
 
-class Barn : public Building, public Menu {
+#define MENU_COL 5
+#define MENU_ROW_1 5
+#define MENU_ROW_2 8
+#define MENU_ROW_3 11
+#define MENU_ROW_4 14
+
+class Barn : public Building {
 protected:
-    std::shared_ptr<Menu> menu;
 
 private:
     unsigned char seeds;
     unsigned char crops;
     bool barnActivated = 0;
-
-    Menu* showMenu();
 
 public:
     void nightUpdate();
