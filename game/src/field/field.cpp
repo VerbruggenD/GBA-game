@@ -52,7 +52,7 @@ void Field::harvest(){
     }
 };
 
-void Field::action(char wichCrop){
+void Field::plantOrHarvest(char wichCrop){      // previously named action
     if (status==LEEG)
     {
         Field::plant(wichCrop);
@@ -61,6 +61,4 @@ void Field::action(char wichCrop){
     {
         Field::harvest();
     }
-    
-    
 }

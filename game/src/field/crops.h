@@ -8,7 +8,7 @@
 
 // include crop sprites
 
-#define SOWN 0
+#define SOWN 0  // different croptypes not implemented
 #define MAIS 1
 #define POTATO 2
 #define WHEAT 3

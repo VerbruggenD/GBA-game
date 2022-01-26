@@ -6,11 +6,10 @@
 
 #include "building.h"
 
-#define MENU_COL 5
-#define MENU_ROW_1 5
-#define MENU_ROW_2 8
-#define MENU_ROW_3 11
-#define MENU_ROW_4 14
+#define MENU_COL_1 2
+#define MENU_ROW_1 1
+#define MENU_ROW_2 3
+#define MENU_COL_2 10
 
 class Barn : public Building {
 protected:

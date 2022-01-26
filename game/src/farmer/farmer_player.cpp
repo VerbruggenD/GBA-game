@@ -1,6 +1,7 @@
 
 #include <libgba-sprite-engine/gba_engine.h>
-#include <vector>
+#include <libgba-sprite-engine/background/text_stream.h>
+#include <string>
 
 #include "farmer_player.h"
 #include "farmer.h"
@@ -17,16 +18,24 @@ Farmer::Farmer(SpriteBuilder<Sprite> builder, unsigned short mapIndex, const uns
     this->mapLayout = mapLayout;
 }
 
-int Farmer::getXcor(unsigned short mapIndex) {      // tested & works
-    return ((mapIndex%(this->layoutWidth+2))*8);
-}
-
-int Farmer::getYcor(unsigned short mapIndex) {      // tested & works
-    return ((mapIndex/(this->layoutWidth+2))*8);
-}
-
-unsigned short Farmer::readMap(unsigned short mapIndex) {
-    return (this->mapLayout[mapIndex]);
+void Farmer::printTool() {
+    std::string str;
+    switch (this->toolUsing)
+    {
+    case SEED:
+        str = "Seed";
+        break;
+    case SHOVEL:
+        str = "Shovel";
+        break;
+    case WATER:
+        str = "Water";
+        break;
+    
+    default:
+        break;
+    }
+    TextStream::instance().setText(str, 19, 22);
 }
 
 int Farmer::getOrientation() {                  // tested & works
@@ -119,8 +128,7 @@ void Farmer::hide(bool hide) {
     }
 } 
 
-void Farmer::move(u16 keys) {       // when rotating the key is pressed to long, move function is also ran
-
+void Farmer::move(u16 keys) {
     if (this->moving) {
         if (keys & KEY_ANY) {
 

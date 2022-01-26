@@ -25,7 +25,7 @@ public:
     void buildCrop(char x, char y);
     void plant(char whichCrop);
     void harvest();
-    void action(char whichCrop);
+    void plantOrHarvest(char whichCrop);
     Crop* crop;
 };
 

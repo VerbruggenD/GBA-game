@@ -54,6 +54,8 @@ void Farm1Scene::load() {
 
 void Farm1Scene::tick(u16 keys) {
 
+    farmer->printTool();
+
     if (keys & KEY_A) {
         selectZone(keys);
     }
@@ -75,22 +77,22 @@ void Farm1Scene::selectZone(u16 keys) {
         {
         case AZ_BARN:
         {
+            if (farmer->getTool()==SEED || farmer->getTool()==SHOVEL) {
+                if (farmer->getTool()==SEED) farmer->setTool(SHOVEL);
+                else farmer->setTool(SEED);
+            }
+            else {
+                farmer->setTool(SEED);
+            }
             bg->updateMap(menuMap);
             farmer->setMoving(false);
             farmer->hide(true);
             barn->enter();
             break;
         }
-        // case AZ_HOME:
-        //     TextStream::instance().setText("home",10,10);
-        //     break;
-
         case AZ_WATERT:
-            TextStream::instance().setText("watertower",10,10);
+            farmer->setTool(WATER);
             break;
-        // case 4:
-            
-        //     break;
         case AZ_HOME:
             field1->updateField();
             field2->updateField();
@@ -98,16 +100,20 @@ void Farm1Scene::selectZone(u16 keys) {
             field4->updateField();
             break;
         case 10:
-            field1->action(SOWN);
+            if (farmer->getTool()==SEED) field1->plant(SOWN);
+            if (farmer->getTool()==SHOVEL) field1->harvest();
             break;
         case 11:
-            field2->action(SOWN);
+            if (farmer->getTool()==SEED) field2->plant(SOWN);
+            if (farmer->getTool()==SHOVEL) field2->harvest();
             break;
         case 12:
-            field3->action(SOWN);
+            if (farmer->getTool()==SEED) field3->plant(SOWN);
+            if (farmer->getTool()==SHOVEL) field3->harvest();
             break;
         case 13:
-            field4->action(SOWN);
+            if (farmer->getTool()==SEED) field4->plant(SOWN);
+            if (farmer->getTool()==SHOVEL) field4->harvest();
             break;        
         default:
             TextStream::instance().clear();

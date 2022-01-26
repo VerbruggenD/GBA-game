@@ -12,8 +12,8 @@ Barn::Barn(unsigned char seeds, unsigned char crops) {
 void Barn::enter() {
     // vervangen door generic menu class
     this->barnActivated = true;
-    TextStream::instance().setText("Crops: " + std::to_string(this->crops), MENU_ROW_1, MENU_COL);
-    TextStream::instance().setText("Seeds: " + std::to_string(this->seeds),MENU_ROW_2, MENU_COL);
+    TextStream::instance().setText("Crops: " + std::to_string(this->crops), MENU_ROW_1, MENU_COL_1);
+    TextStream::instance().setText("Seeds: " + std::to_string(this->seeds),MENU_ROW_2, MENU_COL_1);
     while(this->barnActivated) {
         
     }

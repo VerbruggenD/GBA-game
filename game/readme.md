@@ -14,7 +14,7 @@ All the tools from the barn can be used on the different fields.
 We made the game dynamically to be able to upgrade it in a future revision. For example, we included an actionzone for a truck to be able to go to the market and sell your harvested crops or buy new seeds.
 
 
-![alt text](https://raw.githubusercontent.com/VerbruggenD/GBA-game/game_base_restructure/game/img/diagram.png)
+![structure diagram](https://raw.githubusercontent.com/VerbruggenD/GBA-game/game_base_restructure/game/img/diagram.png)
 
  
 #### Backgrounds
@@ -28,7 +28,9 @@ Our farmer sprite was also built from scratch and converted to pixeldata with gr
 
 ### Screenshot from the game
 
-![alt text](https://github.com/VerbruggenD/GBA-game/raw/game_base_restructure/game/img/background.png)
+![background](https://github.com/VerbruggenD/GBA-game/raw/game_base_restructure/game/img/background.png)
+
+![in game menu](https://github.com/VerbruggenD/GBA-game/raw/game_base_restructure/game/img/background.png)
 
 ### Features in the game
 
