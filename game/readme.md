@@ -5,21 +5,35 @@ https://github.com/wgroeneveld/gba-sprite-engine
 
 #### Game model
 
+Starting out you can choose to start a new game, after which you are dropped straight into the farm. In the farm you have a barn, a watertower, a house and 12 fields.
+To select your farming tool you can go to the barn.
+To water the crops you can go to the watertower.
+To go to sleep you can go to the house.
+All the tools from the barn can be used on the different fields.
 
-![alt text](https://raw.githubusercontent.com/snow107/gba-sprite-engine/master/img/Diagram.png) nog aanpassen
+We made the game dynamically to be able to upgrade it in a future revision. For example, we included an actionzone for a truck to be able to go to the market and sell your harvested crops or buy new seeds.
+
+
+![alt text](https://raw.githubusercontent.com/VerbruggenD/GBA-game/game_base_restructure/game/img/diagram.png)
 
  
 #### Backgrounds
 
-The backrounds we used are very limited. 
+For our game we only needed one background, the farm itself.
+We created this background from scratch and used grit to convert it to pixeldata. Grit was really difficult and frustrating to work with but eventually after a lot of sweat and tears we got it working properly. 
+
+#### Sprites
+
+Our farmer sprite was also built from scratch and converted to pixeldata with grit, unfortunatly even after a lot, tears and blood, our farmer still has the wrong colors after converting it in grit with a shared palette.
 
 ### Screenshot from the game
 
-![alt text](https://raw.githubusercontent.com/snow107/gba-sprite-engine/master/img/game.png) nog aanpassen
+![alt text](https://github.com/VerbruggenD/GBA-game/raw/game_base_restructure/game/img/background.png)
 
 ### Features in the game
 
-The first level is a standard small level with a few spikes where you can die.  
-In the second level the map is larger and becomes a level of 64x64 tiles.  
-The third level has jump pad to create a bigger jump height.  
-The fourth and last level has rising water, which makes it a time based level.
+We Implemented the most common features of a real farm, these include: 
+* Planting seeds
+* Watering crops
+* Harvesting crops
+* Changing farmtool
