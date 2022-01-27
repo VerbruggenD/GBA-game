@@ -1,7 +1,10 @@
 # FarmCity
 
-This game is developed for the gameboy advance using the sprite engine of Wouter Groeneveld.
+This game is developed by Dieter Verbruggen and David Gerits for the gameboy advance using the sprite engine of Wouter Groeneveld.
 https://github.com/wgroeneveld/gba-sprite-engine
+
+* Dieter: https://github.com/VerbruggenD
+* David: https://github.com/DivadGe
 
 ## Idea
 The idea of this game is a farm simulation where you can buy and sell produce to farm, and ultimately earn money to expand your farming business. With expandebility in mind we created this game, but because of lack of time only a few features could be implemented.
